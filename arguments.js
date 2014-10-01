@@ -1,34 +1,34 @@
-function validate(conf, types) {
-    for (var key in types) {
-        if (types.hasOwnProperty(key)) {
-            if (typeof conf[key] !== types[key]) {
-                console.log("Does not validate. '" + key + "' has type " + (typeof conf[key]) + ", expected " + (typeof types[key]) + ".");
-                return false;
-            }
+(function(exports) {
+
+    var verbose = true;
+
+    function output(str) {
+        if (verbose) {
+            console.log(str);
         }
     }
-    console.log("Validates");
-    return true;
-}
 
+    exports.validate = function(conf, types) {
+        for (var key in types) {
+            if (types.hasOwnProperty(key)) {
 
+                var argtype = typeof conf[key];
 
-function test(conf) {
-    validate(conf, {
-        name: "string",
-        age: "number",
-        test: "string"
-    });
-}
+                if (argtype === 'object') {
+                    if (conf[key] instanceof Array && 'array' !== types[key]) {
+                        output("Does not validate. '" + key + "' has type " + argtype + ", expected " + (typeof types[key]) + ".");
+                        return false;
+                    }
+                } else if (argtype !== types[key]) {
+                    output("Does not validate. '" + key + "' has type " + argtype + ", expected " + (typeof types[key]) + ".");
+                    return false;
+                }
+            }
+        }
+        output("Validates");
+        return true;
+    };
 
-test({
-    name: "Foo",
-    age: 12,
-    test: "12"
-});
+    return exports;
 
-test({
-    name: "Foo",
-    age: 12,
-    test: 12
-});
+})(typeof exports === 'undefined' ? this['arguments'] = {} : exports);
