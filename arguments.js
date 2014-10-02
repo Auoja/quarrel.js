@@ -1,20 +1,11 @@
 (function(exports) {
 
-    var verbose = true;
-
     exports.ARRAY = 'array';
     exports.BOOL = 'boolean';
     exports.FUNCTION = 'function';
     exports.NUMBER = 'number';
     exports.OBJECT = 'object';
     exports.STRING = 'string';
-
-
-    function output(str) {
-        if (verbose) {
-            console.log('            ' + str);
-        }
-    }
 
     function validateExpectedType(type) {
         switch (type) {
@@ -48,10 +39,10 @@
                 var expectedType = types[key];
 
                 if (!validateExpectedType(expectedType)) {
-                    output("'" + key + "' has invalid type.");
+                    console.log("'" + key + "' has invalid type.");
                     validates = false;
                 } else if (actualType !== expectedType) {
-                    output("'" + key + "' has type " + actualType + ", expected " + expectedType + ".");
+                    console.log("'" + key + "' has type " + actualType + ", expected " + expectedType + ".");
                     validates = false;
                 }
             }

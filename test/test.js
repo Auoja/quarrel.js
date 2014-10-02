@@ -5,7 +5,7 @@ var testConf = {
     testString: "foo",
     testNumber: 0,
     testBoolean: true,
-    testArray: [12],
+    testArray: [],
     testObject: {},
     testFunction: function() {}
 };
