@@ -1,9 +1,10 @@
 (function(exports) {
 
-    var verbose = false;
+    var verbose = true;
 
     exports.ARRAY = 'array';
     exports.BOOL = 'boolean';
+    exports.FUNCTION = 'function';
     exports.NUMBER = 'number';
     exports.OBJECT = 'object';
     exports.STRING = 'string';
@@ -11,28 +12,22 @@
 
     function output(str) {
         if (verbose) {
-            console.log(str);
+            console.log('            ' + str);
         }
     }
 
     function whatIsThis(obj) {
         var type = typeof obj;
 
-        switch (type) {
-            case exports.OBJECT:
-                if (obj instanceof Array) {
-                    return exports.ARRAY;
-                }
-            case exports.STRING:
-            case exports.NUMBER:
-            case exports.BOOL:
-                return type;
+        if (type === exports.OBJECT && (obj instanceof Array)) {
+            type = exports.ARRAY;
         }
 
-        output(type + " is unknown");
+        return type;
     }
 
     exports.validate = function(conf, types) {
+        var validates = true;
         for (var key in types) {
             if (types.hasOwnProperty(key)) {
                 var actualType = whatIsThis(conf[key]);
@@ -40,12 +35,11 @@
 
                 if (actualType !== expectedType) {
                     output("Does not validate. '" + key + "' has type " + actualType + ", expected " + expectedType + ".");
-                    return false;
+                    validates = false;
                 }
             }
         }
-        output("Validates");
-        return true;
+        return validates;
     };
 
     return exports;
