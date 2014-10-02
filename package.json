@@ -1,0 +1,17 @@
+{
+  "name": "Arguments",
+  "version": "0.0.1",
+  "description": "Argument validation for Node.js and browsers",
+  "main": "arguments.js",
+  "devDependencies": {
+    "mocha": "^1.21.4"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha"
+  },
+  "author": "Anton Auoja <antonauoja@gmail.com>",
+  "readmeFilename": "README.md",
+  "engines": {
+    "node": "0.10.31"
+  }
+}
