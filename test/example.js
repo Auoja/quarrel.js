@@ -137,4 +137,11 @@ describe('Standard Validation', function() {
             }));
         })
     })
+
+    describe('Validate Faulty Use', function() {
+        it('Should return false if expected param is not a valid type', function() {
+            assert.equal(false, _a.validate(testConf, testConf));
+        })
+    })
+
 })

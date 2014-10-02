@@ -16,6 +16,20 @@
         }
     }
 
+    function validateExpectedType(type) {
+        switch (type) {
+            case exports.ARRAY:
+            case exports.BOOL:
+            case exports.FUNCTION:
+            case exports.NUMBER:
+            case exports.OBJECT:
+            case exports.STRING:
+                return true;
+            default:
+                return false;
+        }
+    }
+
     function whatIsThis(obj) {
         var type = typeof obj;
 
@@ -33,8 +47,11 @@
                 var actualType = whatIsThis(conf[key]);
                 var expectedType = types[key];
 
-                if (actualType !== expectedType) {
-                    output("Does not validate. '" + key + "' has type " + actualType + ", expected " + expectedType + ".");
+                if (!validateExpectedType(expectedType)) {
+                    output("'" + key + "' has invalid type.");
+                    validates = false;
+                } else if (actualType !== expectedType) {
+                    output("'" + key + "' has type " + actualType + ", expected " + expectedType + ".");
                     validates = false;
                 }
             }
