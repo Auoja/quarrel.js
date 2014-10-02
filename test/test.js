@@ -16,13 +16,13 @@ describe('Standard Validation', function() {
 
         it('Should return true if input is String', function() {
             assert.equal(true, _a.validate(testConf, {
-                testString: _a.STRING
+                testString: String
             }));
         })
 
         it('Should return false if input is not String', function() {
             assert.equal(false, _a.validate(testConf, {
-                testString: _a.NUMBER
+                testString: Number
             }));
         })
     })
@@ -31,13 +31,13 @@ describe('Standard Validation', function() {
 
         it('Should return true if input is Number', function() {
             assert.equal(true, _a.validate(testConf, {
-                testNumber: _a.NUMBER
+                testNumber: Number
             }));
         })
 
         it('Should return false if input is not Number', function() {
             assert.equal(false, _a.validate(testConf, {
-                testNumber: _a.STRING
+                testNumber: String
             }));
         })
     })
@@ -46,13 +46,13 @@ describe('Standard Validation', function() {
 
         it('Should return true if input is Boolean', function() {
             assert.equal(true, _a.validate(testConf, {
-                testBoolean: _a.BOOL
+                testBoolean: Boolean
             }));
         })
 
         it('Should return false if input is not Boolean', function() {
             assert.equal(false, _a.validate(testConf, {
-                testBoolean: _a.STRING
+                testBoolean: String
             }));
         })
     })
@@ -61,13 +61,13 @@ describe('Standard Validation', function() {
 
         it('Should return true if input is Object', function() {
             assert.equal(true, _a.validate(testConf, {
-                testObject: _a.OBJECT
+                testObject: Object
             }));
         })
 
         it('Should return false if input is not Object', function() {
             assert.equal(false, _a.validate(testConf, {
-                testObject: _a.ARRAY
+                testObject: Array
             }));
         })
     })
@@ -76,13 +76,13 @@ describe('Standard Validation', function() {
 
         it('Should return true if input is Array', function() {
             assert.equal(true, _a.validate(testConf, {
-                testArray: _a.ARRAY
+                testArray: Array
             }));
         })
 
         it('Should return false if input is not Array', function() {
             assert.equal(false, _a.validate(testConf, {
-                testArray: _a.OBJECT
+                testArray: Object
             }));
         })
     })
@@ -91,13 +91,13 @@ describe('Standard Validation', function() {
 
         it('Should return true if input is Function', function() {
             assert.equal(true, _a.validate(testConf, {
-                testFunction: _a.FUNCTION
+                testFunction: Function
             }));
         })
 
         it('Should return false if input is not Function', function() {
             assert.equal(false, _a.validate(testConf, {
-                testFunction: _a.OBJECT
+                testFunction: Object
             }));
         })
     })
@@ -106,41 +106,35 @@ describe('Standard Validation', function() {
 
         it('Should return true if all inputs are valid', function() {
             assert.equal(true, _a.validate(testConf, {
-                    testString: _a.STRING,
-                    testNumber: _a.NUMBER,
-                    testBoolean: _a.BOOL,
-                    testArray: _a.ARRAY,
-                    testObject: _a.OBJECT,
-                    testFunction: _a.FUNCTION
+                    testString: String,
+                    testNumber: Number,
+                    testBoolean: Boolean,
+                    testArray: Array,
+                    testObject: Object,
+                    testFunction: Function
             }));
         })
 
         it('Should return false if one input is not valid', function() {
             assert.equal(false, _a.validate(testConf, {
-                    testString: _a.NUMBER,
-                    testNumber: _a.NUMBER,
-                    testBoolean: _a.BOOL,
-                    testArray: _a.ARRAY,
-                    testObject: _a.OBJECT,
-                    testFunction: _a.FUNCTION
+                    testString: Number,
+                    testNumber: Number,
+                    testBoolean: Boolean,
+                    testArray: Array,
+                    testObject: Object,
+                    testFunction: Function
             }));
         })
 
         it('Should return false if multiple inputs are not valid', function() {
             assert.equal(false, _a.validate(testConf, {
-                    testString: _a.NUMBER,
-                    testNumber: _a.STRING,
-                    testBoolean: _a.FUNCTION,
-                    testArray: _a.ARRAY,
-                    testObject: _a.OBJECT,
-                    testFunction: _a.FUNCTION
+                    testString: Number,
+                    testNumber: String,
+                    testBoolean: Function,
+                    testArray: Array,
+                    testObject: Object,
+                    testFunction: "asdf"
             }));
-        })
-    })
-
-    describe('Validate Faulty Use', function() {
-        it('Should return false if expected param is not a valid type', function() {
-            assert.equal(false, _a.validate(testConf, testConf));
         })
     })
 

@@ -7,7 +7,7 @@ A tool for making sure arguments passed to a function is of the correct type.
 ```javascript
 
 	function foo(input) {
-		if (_a.validate(input, {name: _a.STRING, age: _a.NUMBER})) {
+		if (_a.validate(input, {name: String, age: Number})) {
 			// … do stuff
 		} else {
 			// … do other stuff

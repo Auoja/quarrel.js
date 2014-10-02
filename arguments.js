@@ -1,44 +1,33 @@
 (function(exports) {
 
-    exports.ARRAY = 'array';
-    exports.BOOL = 'boolean';
-    exports.FUNCTION = 'function';
-    exports.NUMBER = 'number';
-    exports.OBJECT = 'object';
-    exports.STRING = 'string';
-
-    function validateExpectedType(type) {
-        switch (type) {
-            case exports.ARRAY:
-            case exports.BOOL:
-            case exports.FUNCTION:
-            case exports.NUMBER:
-            case exports.OBJECT:
-            case exports.STRING:
-                return true;
-            default:
-                return false;
+    function stringRepresentation(fn) {
+        if (typeof fn == 'function') {
+            return fn.toString().match(/function ([^\(]+)/)[1];
+        } else {
+            return undefined;
         }
     }
 
     function whatIsThis(obj) {
-        var type = typeof obj;
 
-        if (type === exports.OBJECT && (obj instanceof Array)) {
-            type = exports.ARRAY;
+        if (obj === null || obj === undefined) {
+            return undefined;
         }
 
-        return type;
+        var toString = {}.toString.call(obj).match(/\s([a-z|A-Z]+)/)[1];
+
+        return toString;
     }
 
     exports.validate = function(conf, types) {
         var validates = true;
         for (var key in types) {
             if (types.hasOwnProperty(key)) {
-                var actualType = whatIsThis(conf[key]);
-                var expectedType = types[key];
 
-                if (!validateExpectedType(expectedType)) {
+                var actualType = whatIsThis(conf[key]);
+                var expectedType = stringRepresentation(types[key]);
+
+                if (!expectedType) {
                     console.log("'" + key + "' has invalid type.");
                     validates = false;
                 } else if (actualType !== expectedType) {
