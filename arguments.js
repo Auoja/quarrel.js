@@ -1,6 +1,6 @@
 (function(exports) {
 
-    var verbose = true;
+    var verbose = false;
 
     exports.ARRAY = 'array';
     exports.BOOL = 'boolean';
