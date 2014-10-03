@@ -1,8 +1,8 @@
 {
-  "name": "Arguments",
+  "name": "Quarrel.js",
   "version": "0.0.1",
   "description": "Argument validation for Node.js and browsers",
-  "main": "arguments.js",
+  "main": "quarrel.js",
   "devDependencies": {
     "mocha": "^1.21.4"
   },

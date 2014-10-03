@@ -19,7 +19,7 @@
         return toString;
     }
 
-    exports.validate = function(conf, types) {
+    exports.sanction = function(conf, types) {
         var validates = true;
         for (var key in types) {
             if (types.hasOwnProperty(key)) {
@@ -41,4 +41,4 @@
 
     return exports;
 
-})(typeof exports === 'undefined' ? this['arguments'] = {} : exports);
+})(typeof exports === 'undefined' ? this['_q'] = {} : exports);
