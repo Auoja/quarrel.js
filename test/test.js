@@ -7,7 +7,8 @@ var testConf = {
     testBoolean: true,
     testArray: [],
     testObject: {},
-    testFunction: function() {}
+    testFunction: function() {},
+    testDate: new Date()
 };
 
 describe('Standard Validation', function() {
@@ -102,6 +103,21 @@ describe('Standard Validation', function() {
         })
     })
 
+    describe('Validate Date', function() {
+
+        it('Should return true if input is Date', function() {
+            assert.equal(true, _a.validate(testConf, {
+                testDate: Date
+            }));
+        })
+
+        it('Should return false if input is not Date', function() {
+            assert.equal(false, _a.validate(testConf, {
+                testDate: Object
+            }));
+        })
+    })
+
     describe('Validate Multiple', function() {
 
         it('Should return true if all inputs are valid', function() {
@@ -111,7 +127,8 @@ describe('Standard Validation', function() {
                     testBoolean: Boolean,
                     testArray: Array,
                     testObject: Object,
-                    testFunction: Function
+                    testFunction: Function,
+                    testDate: Date
             }));
         })
 
@@ -122,7 +139,8 @@ describe('Standard Validation', function() {
                     testBoolean: Boolean,
                     testArray: Array,
                     testObject: Object,
-                    testFunction: Function
+                    testFunction: Function,
+                    testDate: Date
             }));
         })
 
@@ -133,7 +151,8 @@ describe('Standard Validation', function() {
                     testBoolean: Function,
                     testArray: Array,
                     testObject: Object,
-                    testFunction: "asdf"
+                    testFunction: "asdf",
+                    testDate: Date
             }));
         })
     })
