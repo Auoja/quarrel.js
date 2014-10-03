@@ -1,6 +1,6 @@
 # quarrel.js
 
-A tool for making sure arguments passed to a function is of the correct type.
+A tool for type-checking JavaScript function arguments.
 
 ## Usage
 
@@ -40,4 +40,27 @@ But if that is not your preferred way of doing it, you can do this instead:
 
 	foo("John Doe", 37);
 
+```
+
+
+## Test
+
+Install `mocha` either globaly or locally by running:
+
+```
+	node install
+	
+```
+
+Then just run:
+
+```
+	node test
+	
+```
+or:
+
+```
+	node test/test.js
+	
 ```
