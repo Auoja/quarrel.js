@@ -20,7 +20,6 @@ A tool for type-checking JavaScript function arguments.
 		name: "John Doe",
 		age: 37
 	});
-
 ```
 
 But if that is not your preferred way of doing it, you can do this instead:
@@ -39,28 +38,30 @@ But if that is not your preferred way of doing it, you can do this instead:
 	}
 
 	foo("John Doe", 37);
-
 ```
 
 
-## Test
+## Testing
 
-Install `mocha` either globaly or locally by running:
+Make sure you have [Node](http://nodejs.org) installed and then install [Mocha](http://visionmedia.github.io/mocha/) either globally:
+
+```
+	node install -g mocha
+```
+
+... or locally:
 
 ```
 	node install
-	
 ```
 
 Then just run:
 
 ```
 	node test
-	
 ```
 or:
 
 ```
 	node test/test.js
-	
 ```
