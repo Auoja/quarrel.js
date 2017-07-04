@@ -43,7 +43,7 @@ But if that is not your preferred way of doing it, you can do this instead:
 
 ## Testing
 
-Make sure you have [Node](http://nodejs.org) installed and then install [Mocha](http://visionmedia.github.io/mocha/) either globally:
+Make sure you have [Node](http://nodejs.org) installed and then install [Mocha](http://mochajs.org/) either globally:
 
 ```
 	node install -g mocha
